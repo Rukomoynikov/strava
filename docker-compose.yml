@@ -1,0 +1,49 @@
+services:
+  web:
+    image: rukomoynikov/rails:2.7.1
+    volumes:
+      - ./:/app
+      - rails_cache:/app/tmp/cache
+      - gems:/root/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0
+    ports:
+      - 3000:3000
+    tmpfs:
+      - /tmp
+      - /app/tmp/pids
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: bundle exec rails server -b 0.0.0.0
+  postgres:
+    image: postgres:13
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      PSQL_HISTFILE: /root/log/.psql_history
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432
+    healthcheck:
+      test: pg_isready -U postgres -h 127.0.0.1
+      interval: 5s
+  redis:
+    image: redis:3.2-alpine
+    volumes:
+      - redis:/data
+    ports:
+      - 6379
+    healthcheck:
+      test: redis-cli ping
+      interval: 1s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  postgres:
+  redis:
+  bundle:
+  rails_cache:
+  packs:
+  gems:
