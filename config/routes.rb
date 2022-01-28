@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#home"
+
+  namespace :credentials do 
+    get "exchange_token"
+  end
 end

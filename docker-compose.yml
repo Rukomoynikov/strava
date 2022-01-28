@@ -1,6 +1,8 @@
 services:
   web:
     image: rukomoynikov/rails:2.7.1
+    stdin_open: true
+    tty: true
     volumes:
       - ./:/app
       - rails_cache:/app/tmp/cache
