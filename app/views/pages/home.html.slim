@@ -1,23 +1,22 @@
 <div data-controller="hello"></div>
 
 
-= link_to "Auth via Strava", strava_auth_link
+= strava_auth_link
 = @current_user
 
 br
 
-table
-  - @activities.each do |activity|
-    tr 
-      td 
-        = activity['start_date_local']
-      td 
-        = "#{activity['average_heartrate']} / #{activity['max_heartrate']}"
-      td 
-        = activity['name']
-      td 
-        = activity['distance']
-      td 
-        = activity['location_city']
-
-
+- if @current_user
+  table
+    - @activities.each do |activity|
+      tr 
+        td 
+          = activity['start_date_local']
+        td 
+          = "#{activity['average_heartrate']} / #{activity['max_heartrate']}"
+        td 
+          = activity['name']
+        td 
+          = activity['distance']
+        td 
+          = activity['location_city']

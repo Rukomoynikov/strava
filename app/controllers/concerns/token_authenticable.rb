@@ -24,7 +24,7 @@ module TokenAuthenticable
 
   def authenticate_user
     @current_user =
-      DecodeAuthenticationCommand.call(
+      Users::DecodeAuthenticationCommand.call(
         headers: request.headers, cookies: cookies.signed[:user_id]
       ).result
   end

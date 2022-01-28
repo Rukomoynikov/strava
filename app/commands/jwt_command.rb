@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class JwtCommand
-  SECRET = 'my_supdvd1313sfsdg'
+  SECRET = Rails.application.secrets.secret_key_base
 
   def self.encode(payload)
-    # TODO: Заменить на Rails.application.secrets.secret_key_base
     JWT.encode(payload, SECRET, 'HS256')
   end
 
