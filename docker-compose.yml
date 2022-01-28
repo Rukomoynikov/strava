@@ -26,7 +26,6 @@ services:
       - ./:/app
       - rails_cache:/app/tmp/cache
       - gems:/root/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0
-
     command: rails tailwindcss:watch
   postgres:
     image: postgres:13

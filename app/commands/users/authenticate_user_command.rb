@@ -9,11 +9,7 @@ module Users
     end
 
     def payload
-      @result = JwtCommand.encode(contents)
-    end
-
-    def contents
-      { user_id: athlete_id }
+      @result = JwtCommand.encode({ user_id: athlete_id })
     end
   end
 end

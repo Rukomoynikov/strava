@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.7.1"
 
+group :development, :test do
+  gem 'rspec-rails', '~> 5.0.0'
+end
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.1"
 
@@ -65,4 +69,7 @@ gem "httparty", "~> 0.20.0"
 gem "byebug", "~> 11.1"
 gem "jwt", "~> 2.3"
 gem "slim", "~> 4.1"
+
 gem "tailwindcss-rails", "~> 2.0"
+
+gem "rails-controller-testing", "~> 1.0"
