@@ -2,7 +2,7 @@ module Strava
   class SubscriptionsController < ApplicationController
     def confirm
       render json: {
-        "hub.challeng": params["hub.challeng"]
+        "hub.challenge": params["hub.challenge"]
       }
     end
   end
