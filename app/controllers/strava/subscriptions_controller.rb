@@ -1,5 +1,7 @@
 module Strava
   class SubscriptionsController < ApplicationController
+    skip_before_action :authorize_user, only: [:new]
+
     def confirm
       p params["hub.challenge"]
 
