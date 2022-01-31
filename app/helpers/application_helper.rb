@@ -9,7 +9,7 @@ module ApplicationHelper
       "&scope=activity:read_all"
     ].join()
 
-    link_to "Auth via Strava", url
+    link_to "Auth via Strava", url, class: "header__authButton"
   end
 
   def access_token_url(code)

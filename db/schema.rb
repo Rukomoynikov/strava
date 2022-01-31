@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_27_133039) do
+ActiveRecord::Schema.define(version: 2022_01_31_180431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "strava_activities", force: :cascade do |t|
+    t.jsonb "raw"
+    t.datetime "start_date", precision: 6
+    t.integer "average_heartrate"
+    t.integer "max_heartrate"
+    t.string "name"
+    t.integer "distance"
+    t.bigint "user_credentials_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_credentials_id"], name: "index_strava_activities_on_user_credentials_id"
+  end
 
   create_table "user_credentials", force: :cascade do |t|
     t.integer "athlete_id"
@@ -25,4 +38,18 @@ ActiveRecord::Schema.define(version: 2022_01_27_133039) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_profiles", force: :cascade do |t|
+    t.string "username"
+    t.string "firstname"
+    t.string "lastname"
+    t.integer "sex"
+    t.string "picture"
+    t.bigint "user_credentials_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_credentials_id"], name: "index_user_profiles_on_user_credentials_id"
+  end
+
+  add_foreign_key "strava_activities", "user_credentials", column: "user_credentials_id"
+  add_foreign_key "user_profiles", "user_credentials", column: "user_credentials_id"
 end

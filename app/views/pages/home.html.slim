@@ -1,26 +1,29 @@
-div.header
-  = strava_auth_link
-  = @current_user
+- unless @current_user
+  div.header
+    = strava_auth_link
 
-div
-  - if @current_user
-    table.table-auto
-      thead
-        tr
-          th Start date
-          th Average/Max heartrate
-          th Title
-          th Distance
-          th Location
-      - @activities.each do |activity|
-        tr 
-          td 
-            = activity['start_date_local']
-          td 
-            = "#{activity['average_heartrate']} / #{activity['max_heartrate']}"
-          td 
-            = activity['name']
-          td 
-            = activity['distance']
-          td 
-            = activity['location_city']
+
+- if @current_user
+  = @profile.username
+  div
+    - if @activities.present?
+      table.table-auto
+        thead
+          tr
+            th Start date
+            th Average/Max heartrate
+            th Title
+            th Distance
+            th Location
+        - @activities.each do |activity|
+          tr 
+            td 
+              = activity['start_date']
+            td 
+              = "#{activity['average_heartrate']} / #{activity['max_heartrate']}"
+            td 
+              = activity['name']
+            td 
+              = activity['distance']
+            td 
+              = activity['location_city']

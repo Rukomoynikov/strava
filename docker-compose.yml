@@ -18,15 +18,6 @@ services:
       redis:
         condition: service_healthy
     command: bundle exec rails server -b 0.0.0.0
-  client:
-    image: rukomoynikov/rails:2.7.1
-    stdin_open: true
-    tty: true
-    volumes:
-      - ./:/app
-      - rails_cache:/app/tmp/cache
-      - gems:/root/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0
-    command: rails tailwindcss:watch
   postgres:
     image: postgres:13
     volumes:
