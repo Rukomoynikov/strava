@@ -6,8 +6,8 @@ module Strava
       return render json: {
         "hub.challenge": params["hub.challenge"]
       } if params["hub.challenge"]
+
+      p params
     end
   end
 end
-
-# "hub.challenge": params["hub.challenge"]
