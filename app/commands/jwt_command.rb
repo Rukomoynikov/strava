@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class JwtCommand
-  SECRET = Rails.application.secrets.secret_key_base
+  SECRET = Rails.application.credentials.secret_key_base
 
   def self.encode(payload)
     JWT.encode(payload, SECRET, 'HS256')
