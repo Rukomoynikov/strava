@@ -27,7 +27,11 @@ module TokenAuthenticable
       Users::DecodeAuthenticationCommand.call(
         headers: request.headers, cookies: cookies.signed[:user_id]
       ).result
-    @profile = @current_user.user_profile
+
+    # TODO: Needs to be rewriten
+    if @current_user
+      @profile = @current_user.user_profile
+    end
   end
 
   def authorize_user
