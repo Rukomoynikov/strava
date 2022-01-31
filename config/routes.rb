@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   end
 
   namespace :strava do
-    get "subscriptions/confirm", to: "subscriptions#confirm"
+    get "subscriptions/incoming", to: "subscriptions#incoming"
   end
 end
