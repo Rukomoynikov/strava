@@ -69,7 +69,4 @@ gem "httparty", "~> 0.20.0"
 gem "byebug", "~> 11.1"
 gem "jwt", "~> 2.3"
 gem "slim", "~> 4.1"
-
-gem "tailwindcss-rails", "~> 2.0"
-
 gem "rails-controller-testing", "~> 1.0"
