@@ -7,6 +7,9 @@ module Strava
         "hub.challenge": params["hub.challenge"]
       } if params["hub.challenge"]
 
+    end
+
+    def webhook
       p params
     end
   end

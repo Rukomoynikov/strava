@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   namespace :strava do
     get "subscriptions/incoming", to: "subscriptions#incoming"
+    post "subscriptions/incoming", to: "subscriptions#webhook"
   end
 end
