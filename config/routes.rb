@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   namespace :user do
     resources :credentials, only: [:new]
   end
+
+  namespace :strava do
+    get "subscriptions/confirm", to: "subscriptions#confirm"
+  end
 end
