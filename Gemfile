@@ -70,3 +70,5 @@ gem "byebug", "~> 11.1"
 gem "jwt", "~> 2.3"
 gem "slim", "~> 4.1"
 gem "rails-controller-testing", "~> 1.0"
+
+gem "cssbundling-rails", "~> 1.0"

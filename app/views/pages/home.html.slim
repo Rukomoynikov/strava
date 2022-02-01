@@ -1,5 +1,5 @@
 - unless @current_user
-  div.header
+  .header
     = strava_auth_link
 
 
@@ -7,7 +7,7 @@
   = @profile.username
   div
     - if @activities.present?
-      table.table-auto
+      table.table
         thead
           tr
             th Start date
