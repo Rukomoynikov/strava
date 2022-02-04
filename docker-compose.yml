@@ -35,7 +35,7 @@ services:
       - /tmp
     volumes:
       - ./:/app
-    command: yarn build:js --watch
+    command: yarn build --watch
   postgres:
     image: postgres:13
     volumes:
