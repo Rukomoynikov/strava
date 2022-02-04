@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Strava Journal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track" => "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>  
+  </head>
+
+  <body>
+    <div class="container">
+      <%= render "layouts/header" %>
+    </div>
+    <main class="container layout__content">
+      <%= yield %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+.container
+  .header
+    .header__logo
+      = image_tag "logo.svg", width: "200px"
+    .header__authContainer
+      - if @current_user
+        .avatar
+          - if @profile.picture
+            = image_tag @profile.picture
+          = @profile.username
+      - else
+          = strava_auth_link

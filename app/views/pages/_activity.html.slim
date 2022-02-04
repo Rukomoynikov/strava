@@ -1,0 +1,11 @@
+tr 
+  td 
+    = activity['start_date'].strftime("%b %e")
+  td 
+    = "#{activity['average_heartrate']} / #{activity['max_heartrate']}"
+  td 
+    = activity['name']
+  td 
+    = activity['distance']
+  td 
+    = activity['location_city']

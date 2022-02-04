@@ -1,0 +1,11 @@
+- if @current_user && @activities.present?
+  div
+    table.table
+      thead
+        tr
+          th Start date
+          th Average/Max heartrate
+          th Title
+          th Distance
+          th Location
+      = render partial: "activity", collection: @activities, cached: true
