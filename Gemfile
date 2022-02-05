@@ -74,3 +74,4 @@ gem "rails-controller-testing", "~> 1.0"
 gem "cssbundling-rails", "~> 1.0"
 
 gem "jsbundling-rails", "~> 1.0"
+gem "polylines"

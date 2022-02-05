@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_31_180431) do
+ActiveRecord::Schema.define(version: 2022_02_05_114809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 2022_01_31_180431) do
     t.bigint "user_credentials_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "object_id"
+    t.float "average_speed"
+    t.float "max_speed"
+    t.float "average_cadence"
+    t.float "moving_time"
+    t.index ["object_id"], name: "index_strava_activities_on_object_id", unique: true
     t.index ["user_credentials_id"], name: "index_strava_activities_on_user_credentials_id"
   end
 

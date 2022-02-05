@@ -47,13 +47,16 @@ module Users
     end
 
     def create_user_profile(response, user_credential_id)
-      User::Profile.create(
+      user_profile = User::Profile
+        .where(user_credentials_id: user_credential_id)
+        .first_or_create
+
+      user_profile.update(
         username: response["athlete"]["username"],
         firstname: response["athlete"]["firstname"],
         lastname: response["athlete"]["lastname"],
         sex: response["athlete"]["sex"],
-        picture: response["athlete"]["picture"],
-        user_credentials_id: user_credential_id
+        picture: response["athlete"]["picture"]
       )
     end
 
@@ -73,40 +76,16 @@ module Users
           max_heartrate: activity["max_heartrate"],
           name: activity["name"],
           distance: activity["distance"],
-          user_credentials_id: user_credential_id
+          object_id: activity["id"],
+          average_speed: activity["average_speed"],
+          max_speed: activity["max_speed"],
+          average_cadence: activity["average_cadence"],
+          moving_time: activity["moving_time"], 
+          user_credentials_id: user_credential_id,
         }
       }
 
-      Strava::Activity.insert_all(activities)
+      Strava::Activity.upsert_all(activities, unique_by: :object_id)
     end
   end
 end
-
-# {"token_type"=>"Bearer",
-#  "expires_at"=>1643666377,
-#  "expires_in"=>20861,
-#  "refresh_token"=>"xxxxxxx",
-#  "access_token"=>"xxxxxxx",
-#  "athlete"=>
-#   {"id"=>35617462,
-#    "username"=>"mrukomoynikov",
-#    "resource_state"=>2,
-#    "firstname"=>"Maksim",
-#    "lastname"=>"Rukomoynikov",
-#    "bio"=>nil,
-#    "city"=>nil,
-#    "state"=>nil,
-#    "country"=>nil,
-#    "sex"=>"M",
-#    "premium"=>false,
-#    "summit"=>false,
-#    "created_at"=>"2018-10-11T11:38:41Z",
-#    "updated_at"=>"2020-10-27T19:52:51Z",
-#    "badge_type_id"=>0,
-#    "weight"=>nil,
-#    "profile_medium"=>
-#     "https://graph.facebook.com/10217686390452588/picture?height=256&width=256",
-#    "profile"=>
-#     "https://graph.facebook.com/10217686390452588/picture?height=256&width=256",
-#    "friend"=>nil,
-#    "follower"=>nil}}
