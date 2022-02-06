@@ -1,5 +1,6 @@
 module Strava
   class SubscriptionsController < ApplicationController
+    protect_from_forgery except: :webhook
     skip_before_action :authorize_user, only: [:incoming]
 
     def incoming
