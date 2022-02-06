@@ -132,3 +132,7 @@
 		"updates"=>{}
 	}
 }
+
+# Decoding summary_polyline
+
+https://github.com/dblock/slack-strava/blob/master/slack-strava/models/map.rb
