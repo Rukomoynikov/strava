@@ -1,12 +1,12 @@
 module Strava
   class Activities
-    def get_one(object_id, access_token)
+    def self.get_one(object_id, access_token)
       response = HTTParty.get "https://www.strava.com/api/v3//activities/#{object_id}?include_all_efforts=true", headers: {
         Authorization: "Bearer #{access_token}",
         Accept: "application/json"
       }
 
-      JSON.parse(response.body)
+      data = JSON.parse(response.body)
       
       # activities = activities.map { |activity| 
       #   {

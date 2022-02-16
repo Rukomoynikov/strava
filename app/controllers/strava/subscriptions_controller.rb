@@ -16,8 +16,6 @@ module Strava
       activity = Strava::Activities
         .get_one(webhooks_parameters[:object_id], credentials.access_token)
 
-      p activity
-
       return render json: {}
     end
 
@@ -33,6 +31,3 @@ module Strava
     end
   end
 end
-
-
-params = ActionController::Parameters.new({"aspect_type"=>"create", "event_time"=>1644853978, "object_id"=>6682274243, "object_type"=>"activity", "owner_id"=>35617462, "subscription_id"=>210866, "updates"=>{}, "subscription"=>{"aspect_type"=>"create", "event_time"=>1644853978, "object_id"=>6682274243, "object_type"=>"activity", "owner_id"=>35617462, "subscription_id"=>210866, "updates"=>{}}})
